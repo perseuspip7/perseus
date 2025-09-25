@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="connect.css">
+
+</head>
+<body>
+        <a id="connectBtn" class="connect-btn">
+      <span>Connect</span>
+    </a>
+    <!-- Panel -->
+<div id="sidePanel" class="side-panel hidden">
+  <div id="panelBackdrop" class="panel-backdrop"></div>
+  <div class="panel-card">
+    <div class="panel-left">
+      <div class="panel-header-left">
+        <h2>Connect a Wallet</h2>
+      </div>
+      <div class="panel-body-left">
+  <button id="walletBtn" class="wallet-btn" data-wallet="metamask"><img src="assets/metamask.svg" alt=""> MetaMask</button>
+  <button class="wallet-btn" data-wallet="browser"><img src="assets/browser.svg" alt=""> Browser Wallet</button>
+  <button class="wallet-btn" data-wallet="coinbase"><img src="assets/coinbase.svg" alt=""> Coinbase Wallet</button>
+        <div class="wallet-sep">More</div>
+  <button class="wallet-btn" data-wallet="trust"><img src="assets/trust.svg" alt=""> Trust Wallet</button>
+  <button class="wallet-btn" data-wallet="ledger"><img src="assets/ledger.svg" alt=""> Ledger</button>
+  <button class="wallet-btn" data-wallet="rainbow"><img src="assets/rainbow.svg" alt=""> Rainbow</button>
+  <button class="wallet-btn" data-wallet="imtoken"><img src="assets/imToken.svg" alt=""> imToken</button>
+  <button class="wallet-btn" data-wallet="okx"><img src="assets/OKX.svg" alt=""> OKX</button>
+      </div>
+    </div>
+
+    <div class="panel-right">
+      <button id="closePanel" class="close-btn">✖</button>
+      <div id="statusView" class="status-view">
+        <img id="statusIcon" src="assets/metamask.svg" alt="wallet" />
+        <h3 id="statusTitle">Select a wallet</h3>
+        <p id="statusText">Choose a wallet from the list on the left to connect.</p>
+        <button id="retryBtn" class="retry-btn hidden">RETRY</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  <script src="js/connect.js"></script>
+  <!-- Google Identity Services kutubxonasi -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+</body>
+</html>
+
+

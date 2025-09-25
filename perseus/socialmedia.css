@@ -1,0 +1,76 @@
+
+
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-item {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: width 0.4s ease, background 0.4s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item i{
+font-size: 26px;
+color: #333;
+position: absolute;
+transition: all 0.4s ease;
+}
+
+.nav-item span{
+font-size: 18px;
+font-weight: 700;
+color: #fff;
+opacity: 0;
+letter-spacing: 1px;
+transform: scale(0.5);
+transition: all 0.4s ease;
+}
+
+.nav-item:hover {
+width: 150px;
+border-radius: 12px;
+transform: translateY(-4px);
+box-shadow: 0 6px 12px rgba(0,0,0,0.2), 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.nav-item:hover i {
+transform: scale(0);
+opacity: 0;
+}
+
+.nav-item:hover span {
+opacity: 1;
+transform: scale(1);
+}
+
+.facebook:hover{
+background-color:#1877f2;
+}
+
+.instagram:hover{
+background-color:#e1306c;
+}
+
+.twitter:hover{
+background-color:#1da1f2;
+}
+
+
+.linkedin:hover{
+background-color:#0077b5;
+}
+
+.youtube:hover{
+background-color:#ff0000;
+}

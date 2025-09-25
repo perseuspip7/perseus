@@ -1,0 +1,120 @@
+// js/connect.js
+
+(function(global){
+  function initConnect() {
+    // Elementlarni olish (har doim DOMda bo'lishi kerak — fetch keyin chaqiriladi)
+    const connectBtn = document.getElementById("connectBtn");
+    const walletBtn = document.getElementById("walletBtn");
+    const emailInput = document.getElementById("emailInput");
+    const saveEmailBtn = document.getElementById("saveEmailBtn");
+    const sidePanel = document.getElementById("sidePanel");
+    const closePanel = document.getElementById("closePanel");
+    const panelBackdrop = document.getElementById("panelBackdrop");
+    const walletMeta = document.getElementById('walletMeta'); // agar ishlatilsa
+    const statusIcon = document.getElementById('statusIcon');
+    const statusTitle = document.getElementById('statusTitle');
+    const statusText = document.getElementById('statusText');
+    const retryBtn = document.getElementById('retryBtn');
+
+    // Tegishli elementlar mavjudligini tekshirish
+    if (!connectBtn) return console.warn('connectBtn topilmadi — initConnect bekor qilindi');
+
+    // state
+    let wallet = null;
+
+    // eventlar
+    if (walletBtn) {
+      walletBtn.addEventListener("click", async () => {
+        if (!window.ethereum) return alert("MetaMask kerak!");
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          wallet = accounts[0];
+          alert("Wallet ulandi: " + wallet);
+        } catch (err) {
+          console.error(err);
+          alert('Ulanishda xatolik: ' + (err.message || err));
+        }
+      });
+    }
+
+    if (saveEmailBtn) {
+      saveEmailBtn.addEventListener("click", () => {
+        if (!wallet) return alert("Avval MetaMask ulang!");
+        const email = emailInput ? emailInput.value : '';
+        if (!email) return alert("Email kiriting!");
+        console.log("Email yuborildi:", email);
+        alert("Email saqlandi: " + email);
+      });
+    }
+
+    // panelni ochish/yopish
+    connectBtn.addEventListener("click", () => {
+      sidePanel && sidePanel.classList.add("active");
+      // agar hidden class ishlatilsa:
+      sidePanel && sidePanel.classList.remove('hidden');
+      // reset status view
+      if (statusIcon) statusIcon.src = 'assets/metamask.svg';
+      if (statusTitle) statusTitle.textContent = 'Select a wallet';
+      if (statusText) statusText.textContent = 'Choose a wallet from the list on the left to connect.';
+      if (retryBtn) retryBtn.classList.add('hidden');
+    });
+
+    if (closePanel) {
+      closePanel.addEventListener("click", () => {
+        sidePanel && sidePanel.classList.remove("active");
+        sidePanel && sidePanel.classList.add('hidden');
+      });
+    }
+
+    if (panelBackdrop) {
+      panelBackdrop.addEventListener('click', () => {
+        sidePanel && sidePanel.classList.remove("active");
+        sidePanel && sidePanel.classList.add('hidden');
+      });
+    }
+
+    if (walletMeta) {
+      walletMeta.addEventListener('click', () => {
+        if (statusIcon) statusIcon.src = 'assets/metamask.svg';
+        if (statusTitle) statusTitle.textContent = 'Opening MetaMask...';
+        if (statusText) statusText.textContent = 'Confirm connection in the extension';
+        if (retryBtn) retryBtn.classList.add('hidden');
+
+        // simulate
+        setTimeout(() => {
+          if (retryBtn) retryBtn.classList.remove('hidden');
+          if (statusText) statusText.textContent = 'No response yet. Click RETRY after confirming in MetaMask.';
+        }, 2200);
+      });
+    }
+
+    if (retryBtn) {
+      retryBtn.addEventListener('click', () => {
+        if (statusTitle) statusTitle.textContent = 'Opening MetaMask...';
+        if (statusText) statusText.textContent = 'Waiting for confirmation in the extension';
+        retryBtn.classList.add('hidden');
+
+        setTimeout(() => {
+          if (statusText) statusText.textContent = 'Still waiting. If MetaMask is open, approve the connection.';
+          retryBtn.classList.remove('hidden');
+        }, 1800);
+      });
+    }
+
+    // boshqa initsiyalar kerak bo'lsa shu yerda qo'shing
+  }
+
+  // globalga qo'yamiz, shunda loadConnect script chaqirsa initConnect() ishlaydi
+  global.initConnect = initConnect;
+
+  // agar bu fayl sahifa yuklanishidan oldin o'rnatilsa, DOMContentLoaded bilan init qilish imkoniyati:
+  if (document.readyState !== 'loading') {
+    // agar elementlar allaqachon sahifada bo'lsa avtomatik chaqiramiz
+    if (document.getElementById('connectBtn')) initConnect();
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      if (document.getElementById('connectBtn')) initConnect();
+    });
+  }
+
+})(window);

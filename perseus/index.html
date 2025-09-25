@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perseus</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/logo.png" type="image/png">
+
+  <!-- SEO -->
+  <meta name="description" content="Perseus Token rasmiy sayti – token haqida ma’lumot, yangiliklar va bonuslar.">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sign_in_up.css">
+
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .card {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 150px;
+      text-align: center;
+    }
+
+    .rank {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .name {
+      font-size: 16px;
+    }
+
+    .count {
+      color: #666;
+    }
+  </style>
+  <style>
+    /* Videoni butun oynaga yoyish */
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* videoni ekran o'lchamiga moslaydi */
+      z-index: -1;
+      /* elementlarni video ustiga chiqarmaydi */
+    }
+
+    /* Kontentni yuqorida ko‘rsatish uchun */
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+      top: 40%;
+      font-size: 2rem;
+    }
+  </style>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+
+<body>
+  <video id="bg-video" autoplay muted loop src="/assets/temp.mp4"></video>
+  <!-- Xush kelibsiz oynasi -->
+  <div id="welcomeMsg" class="hello">
+  </div>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img id="logo" src="assets/logo.png" alt="">
+
+      <h1><a href="http://"><strong>Perseus </strong> "PRS"</a></h1>
+    </div>
+
+    <div class="mediaconnect">
+      <div id="social-top" class="social"></div>
+      <div id="connect"></div>
+    </div>
+
+
+
+
+
+    <script>
+      async function loadConnect() {
+        const res = await fetch('connect.html');
+        const html = await res.text();
+
+        const container = document.getElementById('connect');
+        container.innerHTML = html;
+
+        // 1) yuklanmagan bo'lsa connect.css ni head ga qo'shamiz
+        const cssHref = 'connect.css';
+        if (!document.querySelector(`link[href="${cssHref}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = cssHref;
+          document.head.appendChild(link);
+        }
+
+        // 2) connect.js ni yuklaymiz va yuklangach initConnect() chaqirilishini kutamiz
+        const jsSrc = 'js/connect.js';
+        // agar script allaqachon yuklangan bo'lsa, faqat initConnect chaqiramiz
+        if (window._connectScriptLoaded) {
+          if (typeof window.initConnect === 'function') window.initConnect();
+        } else {
+          const script = document.createElement('script');
+          script.src = jsSrc;
+          script.onload = () => {
+            window._connectScriptLoaded = true;
+            if (typeof window.initConnect === 'function') window.initConnect();
+          };
+          document.body.appendChild(script);
+        }
+      }
+
+      loadConnect().catch(err => console.error('loadConnect error:', err));
+    </script>
+
+  </header>
+  <!-- Token info -->
+  <section class="info-reyting_flex">
+    <div class="token-info">
+      <!-- <div class="d">
+        <h3>Token haqida</h3>
+        <p><strong>Nomi:</strong> Perseus (PRS)</p>
+        <p><strong>Jami supply:</strong> 400,000,000 PRS</p>
+        <p><strong>Narxi:</strong> 1 PRS = 0.0001 BNB</p>
+      </div> <br> -->
+      <h3>About the Token</h3>
+      <p>🚀 PERSEUS – is not just another crypto asset, but an opportunity to build the future together.
+        Our mission is to deliver real value to our investors by creating a reliable, secure, and sustainable ecosystem.
+      </p>
+      <div class="textnone">
+        <h3>💎 Why Perseus? </h3>
+        <p>
+          🔥 Deflationary mechanism – over time, the token supply decreases while its value increases. <br>
+
+          🌍 Liquidity booster system – ensures stable trading volume and long-term growth. <br>
+
+          🛡 Anti-whale protection – prevents large sellers from disrupting the market, keeping the price stable. <br>
+
+          💰 Reward system – supports the community and helps grow your holdings. <br>
+
+          ⚡️ Let’s conquer the universe together!
+          PERSEUS Token is not just an investment, but the first step toward future achievements.
+          Join now, claim your share, and unlock exclusive rewards that will take you to the next level!</p>
+      </div>
+
+
+
+      <div class="buy">
+        <div class="container-button">
+          <div class="hover bt-1"></div>
+          <div class="hover bt-2"></div>
+          <div class="hover bt-3"></div>
+          <div class="hover bt-4"></div>
+          <div class="hover bt-5"></div>
+          <div class="hover bt-6"></div>
+          <button class="buy-button"></button>
+        </div>
+      </div>
+    </div>
+    <!-- Hero -->
+
+    <div id="top3-section" class="hero">
+      <a href="dxsale">
+        <div class="reytingflex">
+          <div class="reying1">
+            <img class="reytin1" src="/assets/BackgroundEraser_20250918_163455022.png" alt="">
+          </div>
+          <div class="topcolup">
+            <div class="reying2"><img class="reytin2" src="/assets/reyting2.png" alt=""></div>
+            <div class="reyin2"><img class="reytin3" src="/assets/reyting3.png" alt=""></div>
+          </div>
+        </div>
+      </a>
+      <div class="top3" id="top3">
+        <p class="top3tex">Increase your rank, enter the Top 10, and receive your rewards</p>
+        <p>
+          <a class="ax" href="#" onclick="showMessage(event)">View full ranking page</a>
+        </p>
+        <p id="msg" style="color: red; font-weight: bold; display: none;">
+          ⏳ "The ranking is not yet available. <br> It will be launched after the presale ends."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    async function loadTop3() {
+      try {
+        const res = await fetch('/api/rankings?limit=3');
+        const data = await res.json();
+        const container = document.getElementById('top3');
+        container.innerHTML = '';
+        // Agar kamroq bo'lsa, bo'sh joyni to'ldirish
+        for (let i = 0; i < 3; i++) {
+          const user = data[i];
+          const div = document.createElement('div');
+          div.className = 'card';
+          div.innerHTML = user ?
+            `<div class="rank">${i + 1}</div><div class="name">${user.name}</div><div class="count">${user.purchaseCount} ta</div>` :
+            `<div class="rank">${i + 1}</div><div class="name">—</div><div class="count">0 ta</div>`;
+          container.appendChild(div);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadTop3();
+    // Agar xohlasangiz, har 30s da yangilash: (shart emas)
+    // setInterval(loadTop3, 30000);
+  </script>
+
+
+  <!-- Email form -->
+  <!-- sign in up -->
+  <div id="sign"></div>
+
+  <script>
+    async function loadSignPanel() {
+      try {
+        const res = await fetch("sign_in_up.html");
+        const html = await res.text();
+        document.getElementById("sign").innerHTML = html;
+
+        // ensure sign.js is loaded, then init
+        const src = 'js/sign.js';
+        if (!document.querySelector(`script[src="${src}"]`)) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.onload = () => { if (typeof initSignPanel === 'function') initSignPanel(); };
+          document.body.appendChild(s);
+        } else {
+          if (typeof initSignPanel === 'function') initSignPanel();
+        }
+      } catch (err) {
+        console.error('loadSignPanel error:', err);
+      }
+    }
+
+    loadSignPanel();
+  </script>
+
+  <br><br>
+
+
+
+
+
+
+  <div>
+    <div>
+      <h1 class="content">
+        🚀 LET'S CONQUER THE UNIVERSE TOGETHER 🚀
+      </h1>
+      <p class="contentt">
+        🌌 Perseus — Let’s Conquer the Universe Together! 🌌 <br>
+        Perseus — the legendary hero of ancient myths who defeated dark forces and brought light.
+        Named after him, the Perseus Galaxy Cluster is one of the largest in the universe, containing billions of stars
+        —
+        a true source of immense power. <br>
+
+        ✨ Our Perseus Token is just like that! <br>
+
+        * Strength — in unity! <br>
+
+        * Light — in new opportunities! <br>
+
+        * Infinity — in boundless cosmic possibilities! <br>
+
+        We explore the universe, seek out hidden milestones, uncover its mysteries, and contribute to the future of
+        humanity. <br>
+
+        🌠 Now, you too can join the power of Perseus!
+        Set your course toward the stars and continue to support our journey. <br>
+
+        🤝 “Together, we will conquer the universe!”
+
+      </p>
+    </div>
+  </div>
+
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">
+        <div class="media-block">
+          <div class="tradingview-widget-container">
+            <div id="tradingview_bnb"></div>
+            <script type="text/javascript">
+              new TradingView.widget({
+                "width": "100%",
+                "height": 200,
+                "symbol": "BINANCE:BNBUSD",
+                "interval": "30",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#222",
+                "enable_publishing": false,
+                "hide_top_toolbar": true,
+                "hide_legend": true,
+                "save_image": false,
+                "container_id": "tradingview_bnb"
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <strong>BNB / USD</strong>
+    </div>
+
+
+    <div class="feature">
+      <div class="feature-icon">
+        <div class="media-block">
+          <div class="tradingview-widget-container">
+            <div id="tradingview_eth"></div>
+            <script type="text/javascript">
+              new TradingView.widget({
+                "width": "100%",
+                "height": 200,
+                "symbol": "BINANCE:ETHUSD",
+                "interval": "30",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#222",
+                "enable_publishing": false,
+                "hide_top_toolbar": true,
+                "hide_legend": true,
+                "save_image": false,
+                "container_id": "tradingview_eth"
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <strong>ETH / USD</strong>
+    </div>
+    <div class="feature">
+      <div>
+        <div class="media-block">
+          <div class="tradingview-widget-container">
+            <div id="tradingview_btc"></div>
+            <script type="text/javascript">
+              new TradingView.widget({
+                "width": "100%",
+                "height": 200,
+                "symbol": "BINANCE:BTCUSD",
+                "interval": "30",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#222",
+                "enable_publishing": false,
+                "hide_top_toolbar": true,
+                "hide_legend": true,
+                "save_image": false,
+                "container_id": "tradingview_btc"
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <strong>BTC / USD</strong>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div>
+    <center>
+      <p class="social-text">✨ "Reach for the stars with us!"✨ <br>
+        📡 Follow us and join the Perseus community!📡</p>
+    </center><br>
+    <div class="footermedia">
+      <div id="social-bottom" class="social"></div>
+    </div>
+    <footer>
+      © 2025 Perseus. All rights reserved.
+    </footer>
+  </div>
+
+  <!-- JS -->
+  <script src="js/app.js"></script>
+  <script>
+    async function loadSocialMedia(targetId) {
+      try {
+        const res = await fetch("socialmedia.html");
+        const html = await res.text();
+        document.getElementById(targetId).innerHTML = html;
+
+        // socialmedia.js faylini yuklash va init qilish
+        const src = 'js/socialmedia.js';
+        if (!document.querySelector(`script[src="${src}"]`)) {
+          const s = document.createElement('script');
+          s.src = src;
+          s.onload = () => {
+            if (typeof initSocialMedia === 'function') initSocialMedia();
+          };
+          document.body.appendChild(s);
+        } else {
+          if (typeof initSocialMedia === 'function') initSocialMedia();
+        }
+      } catch (err) {
+        console.error('loadSocialMedia error:', err);
+      }
+    }
+
+    loadSocialMedia("social-top");
+    loadSocialMedia("social-bottom");
+
+
+    function showMessage(e) {
+      e.preventDefault(); // sahifaga o‘tishni to‘xtatadi
+      document.getElementById("msg").style.display = "block";
+    }
+  </script>
+  <script type="module">
+    // Firebase SDK import
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      updateProfile  // 👈 ism qo‘shish uchun
+    } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+    // ✅ To‘g‘ri Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDAPgiwun18dF6pqct7x1F_GzPO0GI9VXw",
+      authDomain: "perseus-91d76.firebaseapp.com",
+      projectId: "perseus-91d76",
+      storageBucket: "perseus-91d76.appspot.com",   // ✅ appspot.com bo‘lishi kerak
+      messagingSenderId: "714954160728",
+      appId: "1:714954160728:web:dde407dffe92823038682d",
+      measurementId: "G-8THT2W0PQN"
+    };
+
+    // Firebase init
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // Sahifa yuklangan zahoti foydalanuvchi holatini tekshirish
+    onAuthStateChanged(auth, (user) => {
+      const signPanel = document.getElementById("sign");
+      if (user) {
+        // Ism bor bo‘lsa → ism, yo‘q bo‘lsa → email chiqsin
+        const name = user.displayName || user.email;
+        const msgBox = document.getElementById("welcomeMsg");
+
+        msgBox.innerText = `Xush kelibsiz, ${name}!`;
+        msgBox.style.display = "block";
+
+        // 3 soniyada avtomatik yo‘qoladi
+        setTimeout(() => {
+          msgBox.style.display = "none";
+        }, 2000);
+
+
+        // Foydalanuvchi kirgan
+        if (signPanel) signPanel.style.display = "none";
+        console.log("Foydalanuvchi tizimga kirgan:", user.displayName || user.email);
+      } else {
+        // Foydalanuvchi tizimga kirmagan
+        if (signPanel) signPanel.style.display = "block";
+        console.log("Foydalanuvchi tizimga kirmagan");
+      }
+    });
+
+
+    // Google orqali kirish
+    // 🔑 Bitta umumiy funksiyani ishlatamiz
+    function googleLogin() {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          alert("Google orqali kirildi: " + result.user.displayName);
+        })
+        .catch((error) => {
+          alert("Xatolik: " + error.message);
+        });
+    }
+
+    // 🔗 Barcha tugmalarni tanlab qo‘shib chiqamiz
+    document.querySelectorAll("#google-signin, #google-signin-1, #google-signin-2")
+      .forEach(btn => btn.addEventListener("click", googleLogin));
+
+
+
+    // Email orqali ro‘yxatdan o‘tish
+    // document.getElementById("signup-btn").addEventListener("click", () => {
+    //   const email = document.getElementById("signupEmail").value;
+    //   const password = document.getElementById("password1").value;
+    //   createUserWithEmailAndPassword(auth, email, password)
+    //     .then(() => alert("Ro‘yxatdan o‘tildi!"))
+    //     .catch((error) => alert("Xatolik: " + error.message));
+    // });
+    // Email orqali ro‘yxatdan o‘tish
+    document.getElementById("signup-btn").addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const email = document.getElementById("signupEmail").value.trim();
+      const password = document.getElementById("password1").value.trim();
+
+      if (!firstName || !email || !password) {
+        alert("Barcha maydonlarni to‘ldiring!");
+        return;
+      }
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          return updateProfile(userCredential.user, {
+            displayName: firstName
+          });
+        })
+        .then(() => {
+          alert("✅ Ro‘yxatdan o‘tildi va ism saqlandi!");
+        })
+        .catch((error) => {
+          alert("❌ Xatolik: " + error.message);
+          console.error(error);
+        });
+    });
+
+    // Email orqali kirish
+    document.getElementById("signin-btn").addEventListener("click", () => {
+      const email = document.getElementById("signinEmail").value;
+      const password = document.getElementById("password").value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => alert("Kirish muvaffaqiyatli!"))
+        .catch((error) => alert("Xatolik: " + error.message));
+    });
+
+
+
+
+
+  </script>
+
+
+
+</body>
+
+</html>

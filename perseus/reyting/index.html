@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Championship</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="leaderboard-container">
+            <!-- Header with Crown -->
+<div class="header-container">
+    <div class="s">
+        <a href="/index.html">
+  <button>
+    <span>HOME</span>
+  </button>
+</a>
+    </div>
+    <div class="s">
+        <div class="header-section">
+            <div class="crown-container">
+                <img src="/assets/image.png" alt="Championship Crown" class="crown-image" />
+            </div>
+            <h1 class="main-title">Leaderboard</h1>
+            <p class="subtitle">Top Players Championship</p>
+        </div>
+    </div>
+    </div>
+
+            <!-- Top 3 Podium -->
+            <div class="podium-container">
+                <!-- Second Place -->
+                <div class="podium-card second-place">
+                    <div class="card-content">
+                        <div class="avatar-container">
+                            <div class="avatar silver-border">
+                                <span class="avatar-text" id="second-initials">SC</span>
+                            </div>
+                            <div class="medal-icon silver-medal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-medal w-8 h-8 text-gray-400" aria-hidden="true"><path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15"></path><path d="M11 12 5.12 2.2"></path><path d="m13 12 5.88-9.8"></path><path d="M8 7h8"></path><circle cx="12" cy="17" r="5"></circle><path d="M12 18v-2h-.5"></path></svg>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <h3 class="user-name" id="second-name">Sarah Chen</h3>
+                            <p class="user-score" id="second-score">2,720</p>
+                            <span class="badge badge-secondary">2nd Place</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- First Place -->
+                <div class="podium-card first-place">
+                    <div class="card-content">
+                        <div class="avatar-container">
+                            <div class="avatar gold-border">
+                                <span class="avatar-text" id="first-initials">AJ</span>
+                            </div>
+                            <div class="medal-icon gold-medal">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                                    <path d="M4 22h16"/>
+                                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <h3 class="user-name" id="first-name">Alex Johnson</h3>
+                            <p class="user-score first-score" id="first-score">2,850</p>
+                            <span class="badge badge-primary">1st Place</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Place -->
+                <div class="podium-card third-place">
+                    <div class="card-content">
+                        <div class="avatar-container">
+                            <div class="avatar bronze-border">
+                                <span class="avatar-text" id="third-initials">MR</span>
+                            </div>
+                            <div class="medal-icon bronze-medal">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="8" r="6"/>
+                                    <path d="m8.21 13.89-1.17 8.88 5.58-3.53 5.58 3.53-1.17-8.88"/>
+                                    <path d="M10 8a2 2 0 1 0 4 0 2 2 0 1 0-4 0"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <h3 class="user-name" id="third-name">Mike Rodriguez</h3>
+                            <p class="user-score" id="third-score">2,640</p>
+                            <span class="badge badge-outline">3rd Place</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 10 Users -->
+            <div class="top-ten-section">
+                <div class="card-content">
+                    <div class="section-header">
+                        <svg class="crown-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11.562 3.266a.5.5 0 0 1 .876 0L14.5 8.5l4.5-1.5a.5.5 0 0 1 .62.62L18.5 12l1.5 4.5a.5.5 0 0 1-.62.62L14.5 15.5l-2.062 5.234a.5.5 0 0 1-.876 0L9.5 15.5 5 17a.5.5 0 0 1-.62-.62L5.5 12 4 7.5a.5.5 0 0 1 .62-.62L9.5 8.5l2.062-5.234Z"/>
+                        </svg>
+                        <h2 class="section-title">Top 10 Champions</h2>
+                    </div>
+                    <div class="top-ten-grid" id="top-ten-list">
+                        <!-- Top 10 users will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Users List -->
+            <div class="all-users-section">
+                <div class="card-content">
+                    <div class="users-header">
+                        <h2 class="section-title">All Players (<span id="total-users">90</span>)</h2>
+                        <button class="toggle-button" id="toggle-users-btn">
+                            <svg class="chevron-icon" id="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                            <span id="toggle-text">Show All (90)</span>
+                        </button>
+                    </div>
+                    
+                    <div class="users-list" id="users-list">
+                        <!-- Users will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="show-more-section" id="show-more-section">
+                        <button class="show-more-button" id="show-more-btn">
+                            View <span id="remaining-count">80</span> more players...
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
